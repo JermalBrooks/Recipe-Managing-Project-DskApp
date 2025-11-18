@@ -31,7 +31,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.clbRestricted = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cblDiet = new System.Windows.Forms.CheckedListBox();
+            this.cblIntolerances = new System.Windows.Forms.CheckedListBox();
             this.lstIngredients = new System.Windows.Forms.ListBox();
             this.btn_Addingredient = new System.Windows.Forms.Button();
             this.txtIngredient = new System.Windows.Forms.TextBox();
@@ -47,7 +47,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(588, 54);
+            this.label5.Location = new System.Drawing.Point(596, 54);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 16);
             this.label5.TabIndex = 25;
@@ -60,9 +60,12 @@
             "Dairy",
             "Gluten",
             "Shellfish",
-            "Nuts",
+            "Tree Nuts",
             "Soy",
-            "Eggs"});
+            "Eggs",
+            "Peanuts",
+            "Seafood",
+            "Red meat"});
             this.clbRestricted.Location = new System.Drawing.Point(569, 77);
             this.clbRestricted.Name = "clbRestricted";
             this.clbRestricted.Size = new System.Drawing.Size(169, 208);
@@ -71,16 +74,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(788, 60);
+            this.label4.Location = new System.Drawing.Point(803, 54);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(126, 16);
             this.label4.TabIndex = 24;
             this.label4.Text = "Dietary Intolerences";
             // 
-            // cblDiet
+            // cblIntolerances
             // 
-            this.cblDiet.FormattingEnabled = true;
-            this.cblDiet.Items.AddRange(new object[] {
+            this.cblIntolerances.FormattingEnabled = true;
+            this.cblIntolerances.Items.AddRange(new object[] {
             "Lactose",
             "Gluten",
             "Caffeine",
@@ -89,11 +92,14 @@
             "MSG",
             "Eggs",
             "Soy",
-            "Nuts"});
-            this.cblDiet.Location = new System.Drawing.Point(771, 77);
-            this.cblDiet.Name = "cblDiet";
-            this.cblDiet.Size = new System.Drawing.Size(175, 208);
-            this.cblDiet.TabIndex = 23;
+            "Nuts",
+            "Shellfish",
+            "Peanuts",
+            "Tree nuts"});
+            this.cblIntolerances.Location = new System.Drawing.Point(771, 77);
+            this.cblIntolerances.Name = "cblIntolerances";
+            this.cblIntolerances.Size = new System.Drawing.Size(175, 208);
+            this.cblIntolerances.TabIndex = 23;
             // 
             // lstIngredients
             // 
@@ -142,7 +148,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(738, 27);
+            this.label1.Location = new System.Drawing.Point(755, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 16);
             this.label1.TabIndex = 17;
@@ -189,7 +195,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.clbRestricted);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cblDiet);
+            this.Controls.Add(this.cblIntolerances);
             this.Controls.Add(this.lstIngredients);
             this.Controls.Add(this.btn_Addingredient);
             this.Controls.Add(this.txtIngredient);
@@ -213,7 +219,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckedListBox clbRestricted;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckedListBox cblDiet;
+        private System.Windows.Forms.CheckedListBox cblIntolerances;
         private System.Windows.Forms.ListBox lstIngredients;
         private System.Windows.Forms.Button btn_Addingredient;
         private System.Windows.Forms.TextBox txtIngredient;

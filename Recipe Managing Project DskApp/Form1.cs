@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -28,7 +29,7 @@ namespace Recipe_Managing_Project_DskApp
         {
             var selectedIngredients = lstIngredients.Items.Cast<string>().ToList();
             var restrictedItems = clbRestricted.CheckedItems.Cast<string>().ToList();
-            var selectedDiets = cblDiet.CheckedItems.Cast<string>().ToList();
+            var selectedDiets = cblIntolerances.CheckedItems.Cast<string>().ToList();
 
             if (selectedIngredients.Count == 0)
             {
@@ -72,24 +73,22 @@ namespace Recipe_Managing_Project_DskApp
 
                 query = string.Format(query, selParams, resParams, dietFilter);
 
-                SqlCommand cmd = new SqlCommand(query, conn);
-                for (int i = 0; i < selectedIngredients.Count; i++)
-                    cmd.Parameters.AddWithValue($"@sel{i}", selectedIngredients[i]);
-                for (int i = 0; i < restrictedItems.Count; i++)
-                    cmd.Parameters.AddWithValue($"@res{i}", restrictedItems[i]);
-                for (int i = 0; i < selectedDiets.Count; i++)
-                    cmd.Parameters.AddWithValue($"@diet{i}", selectedDiets[i]);
-                cmd.Parameters.AddWithValue("@IngredientCount", selectedIngredients.Count);
+               
 
-                string xmlPath = @"DB\dataFile.xml";
+                string xmlPath = Path.Combine(Application.StartupPath, "DB", "dataFile.xml");
                 var recipes = RecipeLoader.LoadRecipes(xmlPath);
                 dvgResults.DataSource = recipes;
 
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-                dvgResults.DataSource = table;
+                var allRecipes = RecipeLoader.LoadRecipes(xmlPath);
 
+                var restrictedIngredients = clbRestricted.CheckedItems.Cast<string>().ToList();
+                var selectedIntolerances = cblIntolerances.CheckedItems.Cast<string>().ToList();
+
+               var filteredRecipes = allRecipes.Where(r =>
+                    selectedIngredients.All(i => r.Ingredients.Contains(i)) &&
+                    !r.Ingredients.Any(i => restrictedIngredients.Contains(i)) &&
+                    (selectedIntolerances.Count == 0 || !r.Intolerances.Any(i => selectedIntolerances.Contains(i)))
+                    ).ToList();
             }
         }
 
@@ -100,6 +99,10 @@ namespace Recipe_Managing_Project_DskApp
             public string Name { get; set; }
             public List<string> Ingredients { get; set; }
             public string Instructions { get; set; }
+
+            public List<string> Intolerances { get; set; }
+
+            public string IngredientList => string.Join(", ", Ingredients);
         }
         private void btn_cancel_Click(object sender, EventArgs e)
         {
@@ -140,7 +143,10 @@ namespace Recipe_Managing_Project_DskApp
                         Ingredients = r.Element("Ingredients")?
                             .Elements("Ingredient")
                             .Select(i => i.Value).ToList(),
-                            Instructions = r.Element("Instructions")?.Value
+                            Instructions = r.Element("Instructions")?.Value,
+                            Intolerances = r.Element("Intolerances")?
+                            .Elements("Intolerance")
+                            .Select(i => i.Value).ToList()
                     }).ToList();
                 return recipes;
             
