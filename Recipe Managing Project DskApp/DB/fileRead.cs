@@ -13,14 +13,17 @@ namespace Recipe_Managing_Project_DskApp.DB
     {
         XmlDocument xmlDoc;
         public List<Recipe> recipe;
-
-        public fileRead(XmlDocument doc)
+        public string path; 
+        public fileRead(XmlDocument doc, string path)
         {
             xmlDoc = doc;
-           
+            this.path = path;
         }
-
-        public void read(string path)
+        public void changePath(string path)
+        {
+            this.path = path;
+        }
+        public void read()
         {
             xmlDoc.Load(path);
             var element = xmlDoc.DocumentElement;
@@ -63,9 +66,14 @@ namespace Recipe_Managing_Project_DskApp.DB
         }
             
         
-    
-        public List<Recipe> getRecipe()
+        
+        public List<Recipe> getRecipes()
         {
+            return recipe;
+        }
+        public List<Recipe> refresh()
+        {
+            read();
             return recipe;
         }
     }

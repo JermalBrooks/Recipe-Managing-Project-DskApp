@@ -13,14 +13,16 @@ public class example
     //if you run this, the only way you can tell if its working is from the xml file.
     public void runExample()
     {
+
+        //the default execution path is in debug 
+        string path = System.Environment.CurrentDirectory.Replace("bin\\Debug", "\\DB\\dataFile.xml");
+    
         // forced pass of variables that are used by all the files
         XmlDocument xmlDoc = new XmlDocument();
-        fileRead read = new fileRead(xmlDoc);
-        fileWrite write = new fileWrite(xmlDoc);
+        fileRead read = new fileRead(xmlDoc, path);
+        fileWrite write = new fileWrite(xmlDoc,path);
 
-      //the default execution path is in debug 
-      string path = System.Environment.CurrentDirectory.Replace("bin\\Debug", "\\DB\\dataFile.xml");
-        read.read(path);
+        read.read();
         List<recipe.Recipe> recipes = read.getRecipe();
         recipe.Name n = new  recipe.Name("Peanut Butter and Jelly", "easy");
         recipe.Restrictions r = new Restrictions("False","True","False", "False", "True", "False", "True", "False", "False");
@@ -35,7 +37,7 @@ public class example
         il.Add(b);  
         recipe.Recipe rep = new recipe.Recipe(n,r,it,il);
         
-        write.write(path, read.getRecipe()[0]);
+        write.write(read.getRecipes()[0]);
 
 
     }

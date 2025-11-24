@@ -14,17 +14,23 @@ namespace Recipe_Managing_Project_DskApp.DB
       
          
         XmlDocument xmlDoc;
+        string path; 
         
-        public fileWrite(XmlDocument doc) {
+        public fileWrite(XmlDocument doc,string path) {
             xmlDoc = doc;
+            this.path = path;
 
-}
-        public void write(string path, Recipe recipe)
+        }
+        public void changePath(string path)
+        {
+            this.path = path;
+        }
+        public void write(Recipe recipe)
         {
            
             xmlDoc.Load(path);
-            var input = xmlDoc.ChildNodes[1] .CreateNavigator();
-
+            var input = xmlDoc.ChildNodes[1].CreateNavigator();
+            
             var XML =  input.AppendChild();
        
             XML.WriteStartElement("recipe");
@@ -68,10 +74,15 @@ namespace Recipe_Managing_Project_DskApp.DB
                 XML.WriteEndElement();
 
             }
-
+            
             XML.Close();
             xmlDoc.Save(path);
 
+        }
+        public void removeRecipe(string recipeName) {
+            xmlDoc.Load(path);
+            var input = xmlDoc.ChildNodes[1].CreateNavigator();
+            
         }
        
     }
