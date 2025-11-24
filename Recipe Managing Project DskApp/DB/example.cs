@@ -23,7 +23,7 @@ public class example
         fileWrite write = new fileWrite(xmlDoc,path);
 
         read.read();
-        List<recipe.Recipe> recipes = read.getRecipe();
+        List<recipe.Recipe> recipes = read.getRecipes();
         recipe.Name n = new  recipe.Name("Peanut Butter and Jelly", "easy");
         recipe.Restrictions r = new Restrictions("False","True","False", "False", "True", "False", "True", "False", "False");
         recipe.Intolerances it = new Intolerances("False", "True", "False", "False", "False", "False", "False", "False", "True", "False", "True", "True");
@@ -37,7 +37,8 @@ public class example
         il.Add(b);  
         recipe.Recipe rep = new recipe.Recipe(n,r,it,il);
         
-        write.write(read.getRecipes()[0]);
+      //  write.write(read.getRecipes()[0]);
+        write.removeRecipe("Peanut-Butter-and-Jelly");
 
 
     }

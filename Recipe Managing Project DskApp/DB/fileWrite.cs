@@ -79,10 +79,24 @@ namespace Recipe_Managing_Project_DskApp.DB
             xmlDoc.Save(path);
 
         }
-        public void removeRecipe(string recipeName) {
+        public void removeRecipe(string recipeName)
+        {
             xmlDoc.Load(path);
-            var input = xmlDoc.ChildNodes[1].CreateNavigator();
-            
+            var doc = xmlDoc.DocumentElement;
+            var root = doc.ChildNodes;
+
+            for (int i = 0; i < root.Count; i++)
+            {
+                foreach (XmlNode node in root[i].ChildNodes[0])
+                {
+
+                    if (node.InnerText == recipeName.Replace(" ", "-") || node.InnerText == recipeName.Replace("-", " ")) 
+                    {
+                         doc.RemoveChild(node.ParentNode.ParentNode);
+                    } 
+                }
+            }
+            xmlDoc.Save(path);
         }
        
     }
