@@ -1,3 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <recipes>
+  <recipe>
+    <name complexity="easy">Peanut-Butter-and-Jelly</name>
+    <restrictions dairy="False" gluten="True" shell-fish="False" tree-nuts="False" soy="True" eggs="False" peanuts="True" seafood="False" red-meat="False" />
+    <intolerances lactose="False" gluten="True" caffeine="False" casein="False" fructose="False" msg="False" eggs="False" soy="False" nuts="True" shellfish="False" peanuts="True" tree-nuts="True" />
+    <ingredient name="Peanut Butter" amount="1" unit="spread" />
+    <ingredient name="Jelly" amount="1" unit="spread" />
+    <ingredient name="Bread" amount="2" unit="slices" />
+  </recipe>
 </recipes>

@@ -37,8 +37,8 @@ public class example
         il.Add(b);  
         recipe.Recipe rep = new recipe.Recipe(n,r,it,il);
         
-       // write.write(rep);
-      write.removeRecipe("Peanut-Butter-and-Jelly");
+        write.write(rep);
+        write.removeRecipe("Peanut-Butter-and-Jelly");
 
 
     }
