@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Recipe_Managing_Project_DskApp;
+using Recipe_Managing_Project_DskApp.Data;
+using Recipe_Managing_Project_DskApp.Models;
 namespace Recipe_Managing_Project_DskApp
 {
     public partial class Form1 : Form
@@ -36,6 +39,14 @@ namespace Recipe_Managing_Project_DskApp
                 MessageBox.Show("Please enter at least one ingredient.");
                 return;
             }
+            recipeloader recipeForm = new recipeloader
+            {
+                selectedIngredients = selectedIngredients,
+                Instructions = restrictedItems,
+                SelectedIntolerances = selectedDiets,
+                RestrictedItems = restrictedItems
+            };
+            recipeForm.Show();
 
             string connectionString = @"Data Source =. \SQLEXPRESS;Initial Catalog=RecipeDB;Integrated Security=True;";
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -149,9 +160,10 @@ namespace Recipe_Managing_Project_DskApp
                             .Select(i => i.Value).ToList()
                     }).ToList();
                 return recipes;
+
             
             }
-
+                
 
         }
     
