@@ -36,6 +36,8 @@
             this.lstbDetails = new System.Windows.Forms.ListBox();
             this.btnback = new System.Windows.Forms.Button();
             this.txtInstructions = new System.Windows.Forms.TextBox();
+            this.lstIngredients = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dvgResults)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +68,7 @@
             this.dvgResults.RowTemplate.Height = 24;
             this.dvgResults.Size = new System.Drawing.Size(176, 301);
             this.dvgResults.TabIndex = 2;
+            this.dvgResults.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgResults_CellClick);
             // 
             // label3
             // 
@@ -110,14 +113,35 @@
             this.txtInstructions.Location = new System.Drawing.Point(525, 67);
             this.txtInstructions.Multiline = true;
             this.txtInstructions.Name = "txtInstructions";
+            this.txtInstructions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtInstructions.Size = new System.Drawing.Size(138, 283);
             this.txtInstructions.TabIndex = 9;
+            // 
+            // lstIngredients
+            // 
+            this.lstIngredients.FormattingEnabled = true;
+            this.lstIngredients.ItemHeight = 16;
+            this.lstIngredients.Location = new System.Drawing.Point(712, 67);
+            this.lstIngredients.Name = "lstIngredients";
+            this.lstIngredients.Size = new System.Drawing.Size(152, 276);
+            this.lstIngredients.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(725, 39);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(120, 16);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Recipe Ingredients";
             // 
             // recipeloader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 467);
+            this.ClientSize = new System.Drawing.Size(930, 467);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lstIngredients);
             this.Controls.Add(this.txtInstructions);
             this.Controls.Add(this.btnback);
             this.Controls.Add(this.lstbDetails);
@@ -128,6 +152,7 @@
             this.Controls.Add(this.label1);
             this.Name = "recipeloader";
             this.Text = "recipeloader";
+            this.Load += new System.EventHandler(this.recipeloader_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,5 +169,7 @@
         private System.Windows.Forms.ListBox lstbDetails;
         private System.Windows.Forms.Button btnback;
         private System.Windows.Forms.TextBox txtInstructions;
+        private System.Windows.Forms.ListBox lstIngredients;
+        private System.Windows.Forms.Label label4;
     }
 }

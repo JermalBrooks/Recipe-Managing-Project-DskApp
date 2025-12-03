@@ -58,6 +58,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recipe.cs" />
+    <Compile Include="RecipeDataLoader.cs" />
     <Compile Include="recipeloader.cs">
       <SubType>Form</SubType>
     </Compile>

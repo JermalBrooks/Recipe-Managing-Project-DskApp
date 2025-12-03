@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Recipe_Managing_Project_DskApp;
+using Recipe_Managing_Project_DskApp.Data;
+using Recipe_Managing_Project_DskApp.Models;
 namespace Recipe_Managing_Project_DskApp
 {
     public partial class Form1 : Form
@@ -38,9 +41,10 @@ namespace Recipe_Managing_Project_DskApp
             }
             recipeloader recipeForm = new recipeloader
             {
-                Ingredients = selectedIngredients,
+                selectedIngredients = selectedIngredients,
                 Instructions = restrictedItems,
-                Intolerances = selectedDiets
+                SelectedIntolerances = selectedDiets,
+                RestrictedItems = restrictedItems
             };
             recipeForm.Show();
 
