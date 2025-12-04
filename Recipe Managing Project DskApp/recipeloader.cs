@@ -43,6 +43,18 @@ namespace Recipe_Managing_Project_DskApp
 
             dvgResults.DataSource = filteredRecipes;
 
+            if (filteredRecipes.Any())
+            {
+                Recipe recipe = filteredRecipes.First();
+
+                lstIngredients.Items.Clear();
+                foreach (var ing in recipe.Ingredients)
+                {
+                    lstIngredients.Items.Add(ing);
+                }
+                txtInstructions.Text = recipe.Instructions;
+            }
+
             lstIngredients.Items.Clear();
             foreach (var ing in recipe.Ingredients)
 
