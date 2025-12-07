@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Recipe_Managing_Project_DskApp.DB
 {
-    internal class recipe
+    public class recipe
     {
+        public static string Instructions;
+
+        public static IEnumerable<object> Ingredients { get; internal set; }
+
         public struct Name
         {
             public string name;
@@ -118,12 +122,14 @@ namespace Recipe_Managing_Project_DskApp.DB
             public Restrictions Restrictions;
             public Intolerances Intolerances;
             public List<Ingredient> Ingredients;
-            public Recipe(Name _Name, Restrictions _Restrictions,Intolerances _Intolerances, List<Ingredient> _Ingredients)
+            public string Instructions;
+            public Recipe(Name _Name, Restrictions _Restrictions,Intolerances _Intolerances, List<Ingredient> _Ingredients,string _Instructions)
             {
                 Name = _Name;
                 Restrictions = _Restrictions;
                 Intolerances = _Intolerances;
                 Ingredients = _Ingredients;
+                Instructions = _Instructions;
             }
 
         }

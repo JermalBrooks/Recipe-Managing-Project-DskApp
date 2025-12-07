@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -11,6 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Recipe_Managing_Project_DskApp;
+using Recipe_Managing_Project_DskApp.DB;
+
+using static Recipe_Managing_Project_DskApp.DB.recipe;
+
 namespace Recipe_Managing_Project_DskApp
 {
     public partial class Form1 : Form
@@ -36,74 +40,37 @@ namespace Recipe_Managing_Project_DskApp
                 MessageBox.Show("Please enter at least one ingredient.");
                 return;
             }
-
-            string connectionString = @"Data Source =. \SQLEXPRESS;Initial Catalog=RecipeDB;Integrated Security=True;";
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            recipeloader recipeForm = new recipeloader
             {
+                selectedIngredients = selectedIngredients,
+                Instructions = restrictedItems,
+                SelectedIntolerances = selectedDiets,
+                RestrictedItems = restrictedItems
+            };
+            recipeForm.Show();
 
-                {
-                    conn.Open();
-                }
 
-                string query = @"
-                    SELECT r.Name, r.Instructions
-                    FROM Recipes r
-                    JOIN RecipeIngredients ri ON r.RecipeId = ri.RecipeId
-                    JOIN Ingredients i ON ri.IngredientId = i.IngredientId
-                    WHERE i.Name IN (@Ingredients)
-                    AND r.RecipeId NOT IN (
-                        SELECT ri.RecipeId
-                        FROM Recipes ri
-                        JOIN RecipeIngredients ri ON ri.RecipeId = ri.RecipeId
-                        JOIN Ingredients i ON ri.IngredientId = i.IngredientId
-                        WHERE i.Name IN (@RestrictedItems)
-                    )
-                    {2}
-                    GROUP BY r.Name, r.Instructions
-                    HAVING COUNT(DISTINCT i.Name) = @IngredientCount";
 
-                {
-                    conn.Open();
-                }
+            string xmlPath = Path.Combine(Application.StartupPath, "DB", "dataFile.xml");
+            var recipes = RecipeLoader.LoadRecipes(xmlPath);
+            dvgResults.DataSource = recipes;
 
-                string selParams = string.Join(",", selectedIngredients.Select((s, i) => $"@sel{i}"));
-                string resParams = string.Join(",", restrictedItems.Select((s, i) => $"@res{i}"));
-                string dietFilter = selectedDiets.Count > 0 ? @"
-                    AND r.DietType IN (" + string.Join(",", selectedDiets.Select((d, i) => $"@diet{i}")) + ")" : "";
+            var allRecipes = RecipeLoader.LoadRecipes(xmlPath);
 
-                query = string.Format(query, selParams, resParams, dietFilter);
+            var restrictedIngredients = clbRestricted.CheckedItems.Cast<string>().ToList();
+            var selectedIntolerances = cblIntolerances.CheckedItems.Cast<string>().ToList();
 
-               
-
-                string xmlPath = Path.Combine(Application.StartupPath, "DB", "dataFile.xml");
-                var recipes = RecipeLoader.LoadRecipes(xmlPath);
-                dvgResults.DataSource = recipes;
-
-                var allRecipes = RecipeLoader.LoadRecipes(xmlPath);
-
-                var restrictedIngredients = clbRestricted.CheckedItems.Cast<string>().ToList();
-                var selectedIntolerances = cblIntolerances.CheckedItems.Cast<string>().ToList();
-
-               var filteredRecipes = allRecipes.Where(r =>
-                    selectedIngredients.All(i => r.Ingredients.Contains(i)) &&
-                    !r.Ingredients.Any(i => restrictedIngredients.Contains(i)) &&
-                    (selectedIntolerances.Count == 0 || !r.Intolerances.Any(i => selectedIntolerances.Contains(i)))
-                    ).ToList();
-            }
+            var filteredRecipes = allRecipes.Where(r =>
+                 selectedIngredients.All(i => r.Ingredients.Contains(i)) &&
+                 !r.Ingredients.Any(i => restrictedIngredients.Contains(i)) &&
+                 (selectedIntolerances.Count == 0 || !r.Intolerances.Any(i => selectedIntolerances.Contains(i)))
+                 ).ToList();
         }
+    
 
 
 
-        public class Recipe
-        {
-            public string Name { get; set; }
-            public List<string> Ingredients { get; set; }
-            public string Instructions { get; set; }
-
-            public List<string> Intolerances { get; set; }
-
-            public string IngredientList => string.Join(", ", Ingredients);
-        }
+    
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -131,9 +98,9 @@ namespace Recipe_Managing_Project_DskApp
         }
             
 
-            public static class RecipeLoader
+                /*      public static class RecipeLoader
         {
-            public static List<Recipe> LoadRecipes(string path)
+  public static List<Recipe> LoadRecipes(string path)
             {
                 var doc = XDocument.Load(path);
                 var recipes = doc.Descendants("Recipe")
@@ -149,11 +116,12 @@ namespace Recipe_Managing_Project_DskApp
                             .Select(i => i.Value).ToList()
                     }).ToList();
                 return recipes;
+
             
             }
+                
 
-
-        }
+        }*/
     
             
     }
