@@ -80,7 +80,6 @@
     <EmbeddedResource Include="recipeloader.resx">
       <DependentUpon>recipeloader.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\recipeloader.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
