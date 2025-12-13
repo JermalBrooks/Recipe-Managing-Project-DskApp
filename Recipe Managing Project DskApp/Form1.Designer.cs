@@ -43,6 +43,7 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.recipeListing = new System.Windows.Forms.ListView();
             this.recipeloaderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.recipeloaderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -194,16 +195,27 @@
             this.recipeListing.TabIndex = 27;
             this.recipeListing.UseCompatibleStateImageBehavior = false;
             this.recipeListing.View = System.Windows.Forms.View.List;
+            this.recipeListing.SelectedIndexChanged += new System.EventHandler(this.recipeListing_SelectedIndexChanged);
             // 
             // recipeloaderBindingSource
             // 
             this.recipeloaderBindingSource.DataSource = typeof(Recipe_Managing_Project_DskApp.recipeloader);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(260, 375);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(198, 20);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Click to remove ingredients";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 592);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.recipeListing);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.clbRestricted);
@@ -242,6 +254,7 @@
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.BindingSource recipeloaderBindingSource;
         private System.Windows.Forms.ListView recipeListing;
+        private System.Windows.Forms.Label label6;
     }
 }
 
