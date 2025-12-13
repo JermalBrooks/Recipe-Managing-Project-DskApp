@@ -14,8 +14,6 @@ namespace Recipe_Managing_Project_DskApp
         [STAThread]
         static void Main()
         {
-            example a = new example();
-            a.runExample();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
