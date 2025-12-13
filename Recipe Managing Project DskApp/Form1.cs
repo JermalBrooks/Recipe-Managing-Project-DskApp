@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static Recipe_Managing_Project_DskApp.DB.recipe;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Recipe_Managing_Project_DskApp
 {
@@ -21,6 +22,9 @@ namespace Recipe_Managing_Project_DskApp
     {
         RecipeDataLoader dataLoader = new RecipeDataLoader();
         AddRecipe addRecipe = new AddRecipe();
+        public Recipe selectedRecipe;
+        InspectRecipe inpectRecipe;
+        
         public void updateListing()
         {
             recipeListing.Items.Clear();
@@ -50,15 +54,6 @@ namespace Recipe_Managing_Project_DskApp
             var selectedRestrictions = clbRestricted.CheckedItems.Cast<string>().ToList();
             var selectedIntolerances = cblIntolerances.CheckedItems.Cast<string>().ToList();
 
-            //  if (selectedIngredients.Count == 0)
-            //   {
-            //     MessageBox.Show("Please enter at least one ingredient.");
-            //      return;
-            //  }
-     
-
-
-
             var allRecipes = dataLoader.load();
 
             var restrictedIngredients = clbRestricted.CheckedItems.Cast<string>().ToList();
@@ -68,9 +63,7 @@ namespace Recipe_Managing_Project_DskApp
             List<Recipe> filteredIntolerances = new List<Recipe>();
             List<Recipe> filteredRestrictions = new List<Recipe>();
             List<Recipe> filteredIngredients = new List<Recipe>();
-            int v = 0;
-            int t = 0;
-            int a = allRecipes.Count;
+            
             for (int m = allRecipes.Count - 1; m >= 0; m--)
             {
                 if (m == allRecipes.Count - 1)
@@ -83,9 +76,7 @@ namespace Recipe_Managing_Project_DskApp
                         for (int i = intolerances.Count - 1; i >= 0; i--)
                         {
                             if (intolerances[selectedIntolerances[i]] == true)
-                            {
-
-
+                            { 
                                 filteredRecipe.RemoveAll(filtered => filteredRecipe.Contains(recipe));
 
                             }
@@ -100,8 +91,6 @@ namespace Recipe_Managing_Project_DskApp
                         {
                             if (restrictions[selectedRestrictions[i]] == true)
                             {
-
-
                                 filteredRecipe.RemoveAll(filtered => filteredRecipe.Contains(recipe));
 
                             }
@@ -116,8 +105,6 @@ namespace Recipe_Managing_Project_DskApp
                         {
                             if (ingredients.Contains(selectedIngredients[i]))
                             {
-
-
                                 filteredRecipe.RemoveAll(filtered => filteredRecipe.Contains(recipe));
 
                             }
@@ -128,15 +115,7 @@ namespace Recipe_Managing_Project_DskApp
                 }
 
                 recipeListing.Items.Clear();
-                t.ToString();
-                // v.ToString();
                 recipeListing.Items.AddRange(dataLoader.convertToListView(filteredRecipe).ToArray());
-                /*var filteredRecipes =  allRecipes.Where(r =>
-                     selectedIngredients.All(i => r.Ingredients.Contains(i)) &&
-                     !r.Ingredients.Any(i => restrictedIngredients.Contains(i)) &&
-                     (selectedIntolerances.Count == 0 || !r.Intolerances.Any(i => selectedIntolerances.Contains(i)))
-                     ).ToList();*/
-
             }
         }
     
@@ -181,42 +160,33 @@ namespace Recipe_Managing_Project_DskApp
 
         private void recipeListing_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (recipeListing.SelectedItems.Count > 0)
+            {
+                var data = dataLoader.load();
+                foreach (Recipe recipe in data)
+                {
+                    if (recipe.Name.name == recipeListing.SelectedItems[0].Text)
+                    {
+                        selectedRecipe = recipe;
+                    }
+                }
+                if (selectedRecipe.Name.name != null)
+                {
+                    inpectRecipe = new InspectRecipe(selectedRecipe);
+                    inpectRecipe.ShowDialog();
+                }
+            }
         }
 
         private void btnAddNewRecipe_Click(object sender, EventArgs e)
         {
             addRecipe.ShowDialog();
+            updateListing();
          }
 
 
 
-
-        /*      public static class RecipeLoader
-{
-public static List<Recipe> LoadRecipes(string path)
-    {
-        var doc = XDocument.Load(path);
-        var recipes = doc.Descendants("Recipe")
-            .Select(r => new Recipe
-            {
-                Name = r.Element("Name")?.Value,
-                Ingredients = r.Element("Ingredients")?
-                    .Elements("Ingredient")
-                    .Select(i => i.Value).ToList(),
-                    Instructions = r.Element("Instructions")?.Value,
-                    Intolerances = r.Element("Intolerances")?
-                    .Elements("Intolerance")
-                    .Select(i => i.Value).ToList()
-            }).ToList();
-        return recipes;
-
-
-    }
-
-
-}*/
-
+ 
 
     }
 }

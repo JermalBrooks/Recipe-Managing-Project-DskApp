@@ -58,7 +58,6 @@
     </Compile>
     <Compile Include="DB\fileRead.cs" />
     <Compile Include="DB\fileWrite.cs" />
-    <Compile Include="DB\example.cs" />
     <Compile Include="DB\recipe.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

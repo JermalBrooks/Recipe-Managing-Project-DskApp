@@ -181,6 +181,7 @@
             // 
             // recipeListing
             // 
+            this.recipeListing.Activation = System.Windows.Forms.ItemActivation.TwoClick;
             this.recipeListing.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.recipeListing.AutoArrange = false;
             this.recipeListing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;

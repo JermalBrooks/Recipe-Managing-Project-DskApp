@@ -24,14 +24,11 @@ namespace Recipe_Managing_Project_DskApp.Data
         // forced pass of variables that are used by all the files
         XmlDocument xmlDoc = new XmlDocument();
         fileRead read;
-        fileWrite write;
-        List<Recipe> recipeList;
-
+  
         public RecipeDataLoader()
         {
             read = new fileRead(xmlDoc, path);
-            write = new fileWrite(xmlDoc, path);
-        }
+         }
 
         public List<recipe.Recipe> load()
         {

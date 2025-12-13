@@ -12,8 +12,7 @@ namespace Recipe_Managing_Project_DskApp.DB
     {
         public static string Instructions;
 
-        //  public static IEnumerable<object> Ingredients { get; internal set; }
-
+ 
         public struct Name
         {
             public string name;
@@ -142,12 +141,12 @@ namespace Recipe_Managing_Project_DskApp.DB
         public struct Ingredient
         {
             public string name;
-            public int amount;
+            public double amount;
             public string unit;
             public Ingredient(string _Name, string _Amount, string _Unit)
             {
                 name = _Name;
-                amount = Convert.ToInt32(_Amount);
+                amount = Convert.ToDouble(_Amount);
                 unit = _Unit;
             }
         }

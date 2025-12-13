@@ -30,22 +30,23 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.lstIntolerances = new System.Windows.Forms.ListView();
+            this.lstRestrictions = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.rdRecipeName = new System.Windows.Forms.Label();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.listView4 = new System.Windows.Forms.ListView();
+            this.lstIngredients = new System.Windows.Forms.ListView();
             this.rdComplex = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.nComplexity = new System.Windows.Forms.Label();
             this.recipeName = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.rtbInstructions = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(61, 87);
+            this.label1.Location = new System.Drawing.Point(40, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 0;
@@ -54,34 +55,36 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(202, 87);
+            this.label2.Location = new System.Drawing.Point(202, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Restrictions ";
             // 
-            // listView1
+            // lstIntolerances
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(191, 275);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(121, 138);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lstIntolerances.HideSelection = false;
+            this.lstIntolerances.Location = new System.Drawing.Point(191, 262);
+            this.lstIntolerances.Name = "lstIntolerances";
+            this.lstIntolerances.Size = new System.Drawing.Size(121, 138);
+            this.lstIntolerances.TabIndex = 2;
+            this.lstIntolerances.UseCompatibleStateImageBehavior = false;
+            this.lstIntolerances.View = System.Windows.Forms.View.List;
             // 
-            // listView2
+            // lstRestrictions
             // 
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(191, 110);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(121, 124);
-            this.listView2.TabIndex = 3;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.lstRestrictions.HideSelection = false;
+            this.lstRestrictions.Location = new System.Drawing.Point(191, 97);
+            this.lstRestrictions.Name = "lstRestrictions";
+            this.lstRestrictions.Size = new System.Drawing.Size(121, 124);
+            this.lstRestrictions.TabIndex = 3;
+            this.lstRestrictions.UseCompatibleStateImageBehavior = false;
+            this.lstRestrictions.View = System.Windows.Forms.View.List;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(202, 252);
+            this.label3.Location = new System.Drawing.Point(202, 239);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 20);
             this.label3.TabIndex = 4;
@@ -90,7 +93,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(469, 87);
+            this.label4.Location = new System.Drawing.Point(411, 74);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 20);
             this.label4.TabIndex = 5;
@@ -105,23 +108,15 @@
             this.rdRecipeName.TabIndex = 6;
             this.rdRecipeName.Text = "Recipe:";
             // 
-            // listView3
+            // lstIngredients
             // 
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(360, 110);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(314, 303);
-            this.listView3.TabIndex = 7;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            // 
-            // listView4
-            // 
-            this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(44, 110);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(121, 303);
-            this.listView4.TabIndex = 8;
-            this.listView4.UseCompatibleStateImageBehavior = false;
+            this.lstIngredients.HideSelection = false;
+            this.lstIngredients.Location = new System.Drawing.Point(2, 97);
+            this.lstIngredients.Name = "lstIngredients";
+            this.lstIngredients.Size = new System.Drawing.Size(171, 303);
+            this.lstIngredients.TabIndex = 8;
+            this.lstIngredients.UseCompatibleStateImageBehavior = false;
+            this.lstIngredients.View = System.Windows.Forms.View.Tile;
             // 
             // rdComplex
             // 
@@ -132,14 +127,14 @@
             this.rdComplex.TabIndex = 9;
             this.rdComplex.Text = "Complexity: ";
             // 
-            // label6
+            // nComplexity
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(127, 46);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "unknown";
+            this.nComplexity.AutoSize = true;
+            this.nComplexity.Location = new System.Drawing.Point(127, 46);
+            this.nComplexity.Name = "nComplexity";
+            this.nComplexity.Size = new System.Drawing.Size(73, 20);
+            this.nComplexity.TabIndex = 10;
+            this.nComplexity.Text = "unknown";
             // 
             // recipeName
             // 
@@ -150,21 +145,41 @@
             this.recipeName.TabIndex = 11;
             this.recipeName.Text = "unknown";
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(498, 406);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 32);
+            this.btnClose.TabIndex = 12;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // rtbInstructions
+            // 
+            this.rtbInstructions.Location = new System.Drawing.Point(328, 97);
+            this.rtbInstructions.Name = "rtbInstructions";
+            this.rtbInstructions.ReadOnly = true;
+            this.rtbInstructions.Size = new System.Drawing.Size(245, 303);
+            this.rtbInstructions.TabIndex = 13;
+            this.rtbInstructions.Text = "";
+            // 
             // InspectRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 450);
+            this.ClientSize = new System.Drawing.Size(597, 450);
+            this.Controls.Add(this.rtbInstructions);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.recipeName);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.nComplexity);
             this.Controls.Add(this.rdComplex);
-            this.Controls.Add(this.listView4);
-            this.Controls.Add(this.listView3);
+            this.Controls.Add(this.lstIngredients);
             this.Controls.Add(this.rdRecipeName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstRestrictions);
+            this.Controls.Add(this.lstIntolerances);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "InspectRecipe";
@@ -178,15 +193,16 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView lstIntolerances;
+        private System.Windows.Forms.ListView lstRestrictions;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label rdRecipeName;
-        private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.ListView listView4;
+        private System.Windows.Forms.ListView lstIngredients;
         private System.Windows.Forms.Label rdComplex;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label nComplexity;
         private System.Windows.Forms.Label recipeName;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.RichTextBox rtbInstructions;
     }
 }
