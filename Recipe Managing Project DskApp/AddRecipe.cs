@@ -61,8 +61,8 @@ namespace Recipe_Managing_Project_DskApp
         private string makeIntructions()
         {
           string instructions = rtbInstructions.Text;
-          //  instructions.Trim();
-         //   instructions.Replace(' ', '-');
+            instructions.Trim();
+            instructions = instructions.Replace(' ', '-');
             return instructions;
         }
         private List<Ingredient> makeIngredients()
