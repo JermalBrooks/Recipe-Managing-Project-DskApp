@@ -74,6 +74,8 @@ namespace Recipe_Managing_Project_DskApp.DB
                 XML.WriteEndElement();
 
             }
+            XML.WriteStartElement("instructions");
+            XML.WriteName(recipe.Instructions);
             
             XML.Close();
             xmlDoc.Save(path);

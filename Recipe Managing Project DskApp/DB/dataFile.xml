@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <recipes>
-	<recipe>
-		<name complexity="easy">Water</name>
-		<restrictions dairy="False" gluten="false" shell-fish="False" tree-nuts="False" soy="true" eggs="False" peanuts="False" seafood="False" red-meat="False" />
-		<intolerances lactose="False" gluten="false" caffeine="False" casein="False" fructose="False" msg="False" eggs="False" soy="False" nuts="False" shellfish="False" peanuts="false" tree-nuts="false" />
-		<ingredient name="Peanut Butter" amount="1" unit="spread" />
-		<ingredient name="Jelly" amount="1" unit="spread" />
-		<ingredient name="Bread" amount="2" unit="slices" />
-		<instructions> spread </instructions>
-	</recipe>
-	<recipe>
-		<name complexity="easy">Peanut-and-Jelly</name>
-		<restrictions dairy="False" gluten="True" shell-fish="False" tree-nuts="False" soy="True" eggs="False" peanuts="True" seafood="False" red-meat="False" />
-		<intolerances lactose="False" gluten="True" caffeine="False" casein="False" fructose="False" msg="False" eggs="False" soy="False" nuts="True" shellfish="False" Peanuts="True" tree-nuts="True" />
-		<ingredient name="Peanut Butter" amount="1" unit="spread" />
-		<ingredient name="Jelly" amount="1" unit="spread" />
-		<ingredient name="Bread" amount="2" unit="slices" />
-		<instructions> spread </instructions>
-	</recipe>
+  <recipe>
+    <name complexity="easy">Water</name>
+    <restrictions dairy="False" gluten="false" shell-fish="False" tree-nuts="False" soy="true" eggs="False" peanuts="False" seafood="False" red-meat="False" />
+    <intolerances lactose="False" gluten="false" caffeine="False" casein="False" fructose="False" msg="False" eggs="False" soy="False" nuts="False" shellfish="False" peanuts="false" tree-nuts="false" />
+    <ingredient name="Peanut Butter" amount="1" unit="spread" />
+    <ingredient name="Jelly" amount="1" unit="spread" />
+    <ingredient name="Bread" amount="2" unit="slices" />
+    <instructions> spread </instructions>
+  </recipe>
+  <recipe>
+    <name complexity="easy">Peanut-and-Jelly</name>
+    <restrictions dairy="False" gluten="True" shell-fish="False" tree-nuts="False" soy="True" eggs="False" peanuts="True" seafood="False" red-meat="False" />
+    <intolerances lactose="False" gluten="True" caffeine="False" casein="False" fructose="False" msg="False" eggs="False" soy="False" nuts="True" shellfish="False" Peanuts="True" tree-nuts="True" />
+    <ingredient name="Peanut Butter" amount="1" unit="spread" />
+    <ingredient name="Jelly" amount="1" unit="spread" />
+    <ingredient name="Bread" amount="2" unit="slices" />
+    <instructions> spread </instructions>
+  </recipe>
   <recipe>
     <name complexity="easy">Peanut-Butter-and-Jelly</name>
     <restrictions dairy="False" gluten="True" shell-fish="False" tree-nuts="False" soy="True" eggs="False" peanuts="True" seafood="False" red-meat="False" />
@@ -25,8 +25,7 @@
     <ingredient name="Peanut Butter" amount="1" unit="spread" />
     <ingredient name="Jelly" amount="1" unit="spread" />
     <ingredient name="Bread" amount="2" unit="slices" />
-	<instructions> spread </instructions>
+    <instructions> spread </instructions>
   </recipe>
-
-
+ 
 </recipes>

@@ -44,6 +44,7 @@
             this.recipeListing = new System.Windows.Forms.ListView();
             this.recipeloaderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
+            this.btnAddNewRecipe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.recipeloaderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,7 +161,7 @@
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(970, 522);
+            this.btn_Search.Location = new System.Drawing.Point(970, 529);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(84, 37);
             this.btn_Search.TabIndex = 16;
@@ -170,9 +171,9 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(828, 523);
+            this.btn_cancel.Location = new System.Drawing.Point(828, 529);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(84, 34);
+            this.btn_cancel.Size = new System.Drawing.Size(84, 37);
             this.btn_cancel.TabIndex = 15;
             this.btn_cancel.Text = "&Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
@@ -191,30 +192,37 @@
             this.recipeListing.MultiSelect = false;
             this.recipeListing.Name = "recipeListing";
             this.recipeListing.ShowGroups = false;
-            this.recipeListing.Size = new System.Drawing.Size(180, 480);
+            this.recipeListing.Size = new System.Drawing.Size(180, 462);
             this.recipeListing.TabIndex = 27;
             this.recipeListing.UseCompatibleStateImageBehavior = false;
             this.recipeListing.View = System.Windows.Forms.View.List;
             this.recipeListing.SelectedIndexChanged += new System.EventHandler(this.recipeListing_SelectedIndexChanged);
             // 
-            // recipeloaderBindingSource
-            // 
-            this.recipeloaderBindingSource.DataSource = typeof(Recipe_Managing_Project_DskApp.recipeloader);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(260, 375);
+            this.label6.Location = new System.Drawing.Point(237, 362);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(198, 20);
             this.label6.TabIndex = 28;
             this.label6.Text = "Click to remove ingredients";
+            // 
+            // btnAddNewRecipe
+            // 
+            this.btnAddNewRecipe.Location = new System.Drawing.Point(264, 415);
+            this.btnAddNewRecipe.Name = "btnAddNewRecipe";
+            this.btnAddNewRecipe.Size = new System.Drawing.Size(150, 101);
+            this.btnAddNewRecipe.TabIndex = 29;
+            this.btnAddNewRecipe.Text = "Add Recipe";
+            this.btnAddNewRecipe.UseVisualStyleBackColor = true;
+            this.btnAddNewRecipe.Click += new System.EventHandler(this.btnAddNewRecipe_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 592);
+            this.Controls.Add(this.btnAddNewRecipe);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.recipeListing);
             this.Controls.Add(this.label5);
@@ -255,6 +263,7 @@
         private System.Windows.Forms.BindingSource recipeloaderBindingSource;
         private System.Windows.Forms.ListView recipeListing;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnAddNewRecipe;
     }
 }
 

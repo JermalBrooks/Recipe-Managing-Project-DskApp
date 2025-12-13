@@ -32,8 +32,6 @@
             this.clbIntolerances = new System.Windows.Forms.CheckedListBox();
             this.rdrecipe = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
-            this.rdComplex = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.rdInstruc = new System.Windows.Forms.Label();
             this.rdRestric = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,6 +41,11 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.rdbEasy = new System.Windows.Forms.RadioButton();
+            this.rdbMedium = new System.Windows.Forms.RadioButton();
+            this.rdbHard = new System.Windows.Forms.RadioButton();
+            this.gbComplex = new System.Windows.Forms.GroupBox();
+            this.gbComplex.SuspendLayout();
             this.SuspendLayout();
             // 
             // clbRestricted
@@ -100,28 +103,6 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(100, 19);
             this.tbName.TabIndex = 3;
-            // 
-            // rdComplex
-            // 
-            this.rdComplex.AutoSize = true;
-            this.rdComplex.Location = new System.Drawing.Point(450, 282);
-            this.rdComplex.Name = "rdComplex";
-            this.rdComplex.Size = new System.Drawing.Size(85, 20);
-            this.rdComplex.TabIndex = 5;
-            this.rdComplex.Text = "Complexity";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Items.AddRange(new object[] {
-            "Easy",
-            "Medium",
-            "Hard"});
-            this.listBox1.Location = new System.Drawing.Point(438, 307);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 64);
-            this.listBox1.TabIndex = 6;
             // 
             // rdInstruc
             // 
@@ -194,6 +175,7 @@
             this.btnAdd.TabIndex = 15;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCancel
             // 
@@ -203,12 +185,59 @@
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // rdbEasy
+            // 
+            this.rdbEasy.AutoSize = true;
+            this.rdbEasy.Location = new System.Drawing.Point(6, 25);
+            this.rdbEasy.Name = "rdbEasy";
+            this.rdbEasy.Size = new System.Drawing.Size(69, 24);
+            this.rdbEasy.TabIndex = 17;
+            this.rdbEasy.Text = "Easy";
+            this.rdbEasy.UseVisualStyleBackColor = true;
+            this.rdbEasy.CheckedChanged += new System.EventHandler(this.rdbEasy_CheckedChanged);
+            // 
+            // rdbMedium
+            // 
+            this.rdbMedium.AutoSize = true;
+            this.rdbMedium.Location = new System.Drawing.Point(6, 52);
+            this.rdbMedium.Name = "rdbMedium";
+            this.rdbMedium.Size = new System.Drawing.Size(90, 24);
+            this.rdbMedium.TabIndex = 18;
+            this.rdbMedium.Text = "Medium";
+            this.rdbMedium.UseVisualStyleBackColor = true;
+            this.rdbMedium.CheckedChanged += new System.EventHandler(this.rdbMedium_CheckedChanged);
+            // 
+            // rdbHard
+            // 
+            this.rdbHard.AutoSize = true;
+            this.rdbHard.Location = new System.Drawing.Point(6, 78);
+            this.rdbHard.Name = "rdbHard";
+            this.rdbHard.Size = new System.Drawing.Size(69, 24);
+            this.rdbHard.TabIndex = 19;
+            this.rdbHard.Text = "Hard";
+            this.rdbHard.UseVisualStyleBackColor = true;
+            this.rdbHard.CheckedChanged += new System.EventHandler(this.rdbHard_CheckedChanged);
+            // 
+            // gbComplex
+            // 
+            this.gbComplex.Controls.Add(this.rdbEasy);
+            this.gbComplex.Controls.Add(this.rdbHard);
+            this.gbComplex.Controls.Add(this.rdbMedium);
+            this.gbComplex.Location = new System.Drawing.Point(438, 280);
+            this.gbComplex.Name = "gbComplex";
+            this.gbComplex.Size = new System.Drawing.Size(135, 112);
+            this.gbComplex.TabIndex = 20;
+            this.gbComplex.TabStop = false;
+            this.gbComplex.Text = "Complexity";
             // 
             // AddRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 404);
+            this.Controls.Add(this.gbComplex);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.richTextBox1);
@@ -218,14 +247,14 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rdRestric);
             this.Controls.Add(this.rdInstruc);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.rdComplex);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.rdrecipe);
             this.Controls.Add(this.clbIntolerances);
             this.Controls.Add(this.clbRestricted);
             this.Name = "AddRecipe";
             this.Text = "Add Recipe";
+            this.gbComplex.ResumeLayout(false);
+            this.gbComplex.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,8 +266,6 @@
         private System.Windows.Forms.CheckedListBox clbIntolerances;
         private System.Windows.Forms.Label rdrecipe;
         private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.Label rdComplex;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label rdInstruc;
         private System.Windows.Forms.Label rdRestric;
         private System.Windows.Forms.Label label3;
@@ -248,5 +275,9 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.RadioButton rdbEasy;
+        private System.Windows.Forms.RadioButton rdbMedium;
+        private System.Windows.Forms.RadioButton rdbHard;
+        private System.Windows.Forms.GroupBox gbComplex;
     }
 }

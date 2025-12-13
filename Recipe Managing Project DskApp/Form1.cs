@@ -20,6 +20,7 @@ namespace Recipe_Managing_Project_DskApp
     public partial class Form1 : Form
     {
         RecipeDataLoader dataLoader = new RecipeDataLoader();
+        AddRecipe addRecipe = new AddRecipe();
         public void updateListing()
         {
             recipeListing.Items.Clear();
@@ -54,13 +55,7 @@ namespace Recipe_Managing_Project_DskApp
             //     MessageBox.Show("Please enter at least one ingredient.");
             //      return;
             //  }
-            recipeloader recipeForm = new recipeloader
-            {
-                selectedIngredients = selectedIngredients,
-                Instructions = selectedRestrictions,
-                SelectedIntolerances = selectedIntolerances,
-                RestrictedItems = selectedRestrictions
-            };
+     
 
 
 
@@ -188,6 +183,11 @@ namespace Recipe_Managing_Project_DskApp
         {
 
         }
+
+        private void btnAddNewRecipe_Click(object sender, EventArgs e)
+        {
+            addRecipe.ShowDialog();
+         }
 
 
 

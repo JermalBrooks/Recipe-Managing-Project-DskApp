@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Recipe_Managing_Project_DskApp.DB
 {
@@ -88,18 +89,18 @@ namespace Recipe_Managing_Project_DskApp.DB
             public bool TreeNuts;
 
             public Intolerances(
-                string lactose,
-                string gluten,
-                string caffeine,
-                string casein,
-                string fructose,
-                string msg,
-                string eggs,
-                string soy,
-                string nuts,
-                string shellfish,
-                string peanuts,
-                string treeNuts)
+               string lactose = "false",
+               string gluten = "false",
+               string caffeine = "false",
+               string casein = "false",
+               string fructose = "false",
+               string msg = "false",
+               string eggs = "false",
+               string soy = "false",
+               string nuts = "false",
+               string shellfish = "false",
+               string peanuts = "false",
+               string treeNuts = "false")
             {
                 Lactose = Convert.ToBoolean(lactose);
                 Gluten = Convert.ToBoolean(gluten);
@@ -115,6 +116,8 @@ namespace Recipe_Managing_Project_DskApp.DB
                 TreeNuts = Convert.ToBoolean(treeNuts);
 
             }
+         
+         
             public Dictionary<string, bool> toDict()
             {
                 return new Dictionary<string, bool>{
@@ -132,7 +135,7 @@ namespace Recipe_Managing_Project_DskApp.DB
             { nameof(TreeNuts), TreeNuts }
              };
 
-
+        
             }
 
         }
