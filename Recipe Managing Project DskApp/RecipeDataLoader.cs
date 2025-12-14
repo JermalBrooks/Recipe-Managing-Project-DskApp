@@ -1,6 +1,5 @@
 ﻿using Recipe_Managing_Project_DskApp;
 using Recipe_Managing_Project_DskApp.DB;
-//using Recipe_Managing_Project_DskApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,9 @@ using static Recipe_Managing_Project_DskApp.DB.recipe;
 namespace Recipe_Managing_Project_DskApp.Data
 {
 
-
+    /// <summary>
+    /// The RecipeDataLoader Class is mostly a utility class to make the code easier to read in more critial files
+    /// </summary>
     public class RecipeDataLoader
     {
         //the default execution path is in debug 
@@ -37,6 +38,10 @@ namespace Recipe_Managing_Project_DskApp.Data
             return read.getRecipes();
 
         }
+        /// <summary>
+        /// Coverts the Recipe list into a form list so it can be displayed by the form 
+        /// </summary>
+        /// <returns></returns>
         public List<ListViewItem> getListView()
         {
             List<Recipe> allRecipes = load();
@@ -48,6 +53,10 @@ namespace Recipe_Managing_Project_DskApp.Data
              }
             return listView;
         }
+        /// <summary>
+        /// After filtering data, the list need to be transfered into a Form readable format
+        /// </summary>
+        
         public List<ListViewItem> convertToListView(List<Recipe> allRecipes)
         {
             List<ListViewItem> listView = new List<ListViewItem>();

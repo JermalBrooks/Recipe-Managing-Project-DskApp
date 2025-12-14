@@ -18,13 +18,19 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Recipe_Managing_Project_DskApp
 {
+    /// <summary>
+    /// Form 1 is the general Form. 
+    /// The primary Function of this form is to search for recipes based on filters inputed by the user
+    /// </summary>
     public partial class Form1 : Form
     {
         RecipeDataLoader dataLoader = new RecipeDataLoader();
         AddRecipe addRecipe = new AddRecipe();
         public Recipe selectedRecipe;
         InspectRecipe inpectRecipe;
-        
+        /// <summary>
+        /// this insures the listing is up to date.
+        /// </summary>
         public void updateListing()
         {
             recipeListing.Items.Clear();
@@ -63,7 +69,7 @@ namespace Recipe_Managing_Project_DskApp
             List<Recipe> filteredIntolerances = new List<Recipe>();
             List<Recipe> filteredRestrictions = new List<Recipe>();
             List<Recipe> filteredIngredients = new List<Recipe>();
-            
+            /// reverse interation in the search method to avoid the possibilty on out of bounds indexing
             for (int m = allRecipes.Count - 1; m >= 0; m--)
             {
                 if (m == allRecipes.Count - 1)
@@ -148,7 +154,11 @@ namespace Recipe_Managing_Project_DskApp
                 MessageBox.Show("Please enter an ingredient.");
             }
         }
-
+        /// <summary>
+        /// Handles the event that occurs when the selected item in the ingredients list changes.
+        
+        ///  Removes the currently selected ingredient from the list when a selection is unwanted
+        /// </summary>
         private void lstIngredients_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstIngredients.SelectedIndex != -1)
@@ -157,7 +167,10 @@ namespace Recipe_Managing_Project_DskApp
                 lstIngredients.Update();
             }
         }
-
+        /// <summary>
+        /// When a new recipe is selected from the list, this method identifies the selected recipe, and displays 
+        /// its details in a dialog window.
+         /// </summary>
         private void recipeListing_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (recipeListing.SelectedItems.Count > 0)
@@ -177,7 +190,10 @@ namespace Recipe_Managing_Project_DskApp
                 }
             }
         }
-
+        /// <summary>
+        /// This method prompts a new form for users in update the recipe directory
+        /// </summary>
+       
         private void btnAddNewRecipe_Click(object sender, EventArgs e)
         {
             addRecipe.ShowDialog();

@@ -9,6 +9,9 @@ using static Recipe_Managing_Project_DskApp.DB.recipe;
 
 namespace Recipe_Managing_Project_DskApp.DB
 {
+    /// <summary>
+    /// Parses all the XML data into the predefined storage structures 
+    /// </summary>
     internal class fileRead
     {
         XmlDocument xmlDoc;
@@ -23,6 +26,10 @@ namespace Recipe_Managing_Project_DskApp.DB
         {
             this.path = path;
         }
+        /// <summary>
+        /// Reads recipe data from the XML file specified by the path and populates the a list for all the recipes 
+        /// </summary>
+ 
         public void read()
         {
             xmlDoc.Load(path);

@@ -11,7 +11,10 @@ namespace Recipe_Managing_Project_DskApp.DB
 {
     internal class fileWrite
     {
-      
+      /// <summary>
+      /// The whole purpose of this file is to write the data recieved from user
+      /// input into the database
+      /// </summary>
          
         XmlDocument xmlDoc;
         string path; 
@@ -79,29 +82,6 @@ namespace Recipe_Managing_Project_DskApp.DB
             XML.WriteEndElement();
 
             XML.Close();
-            xmlDoc.Save(path);
-
-        }
-        public void removeRecipe(string recipeName)
-        {
-            xmlDoc.Load(path);
-            var doc = xmlDoc.DocumentElement;
-            var root = doc.ChildNodes;
-            List<XmlNode> rml = new List<XmlNode>();
-            for (int i =0 ; i < root.Count; i+=1)
-            {
-                XmlNode node = root[i] .ChildNodes[0];
-
-                if (node.InnerText == recipeName.Replace(" ", "-") || node.InnerText == recipeName.Replace("-", " ")) 
-                {
-                    rml.Add(node.ParentNode);
-     
-                } 
-            }
-            for (int i = 0; i < rml.Count; i += 1)
-            {
-                doc.RemoveChild(rml[i]);
-            }                
             xmlDoc.Save(path);
 
         }

@@ -13,6 +13,9 @@ using static Recipe_Managing_Project_DskApp.DB.recipe;
 
 namespace Recipe_Managing_Project_DskApp
 {
+    /// <summary>
+    /// The purpose of this form is to import new recipes into the directory 
+    /// </summary>
     public partial class AddRecipe : Form
     {
         public string nName;
@@ -26,7 +29,11 @@ namespace Recipe_Managing_Project_DskApp
             InitializeComponent();
             write = new fileWrite(xmlDoc, path);
         }
-
+        /// <summary>
+        /// Receives the boolean values from the the check list, index
+        /// is in order so data will not be out of order
+        /// </summary>
+         
         private Restrictions makeRestriction()
         {
             string dairy = clbRestricted.GetItemChecked(0).ToString();
@@ -41,6 +48,10 @@ namespace Recipe_Managing_Project_DskApp
 
             return new Restrictions(dairy, gluten, shellfish, treeNut, soy, eggs, peanuts, seafood, redMeat);
         }
+        /// <summary>
+        /// Receives the boolean values from the the check list, index
+        /// is in order so data will not be out of order
+        /// </summary>
         private Intolerances makeIntolerance()
         {
             string lactose = clbIntolerances.GetItemChecked(0).ToString();
@@ -58,13 +69,28 @@ namespace Recipe_Managing_Project_DskApp
             string treeNuts = clbIntolerances.GetItemChecked(11).ToString();
             return new Intolerances(lactose, gluten, caffeine, casein, fructose, msg, eggs, soy, nuts, shellfish, peanuts, treeNuts);
         }
-        private string makeIntructions()
+        /// <summary>
+        /// Formats the intructions so they can be written in the xml data base
+        /// </summary>
+         private string makeIntructions()
         {
             string instructions = rtbInstructions.Text;
             instructions.Trim();
             instructions = instructions.Replace(' ', '-');
+            instructions = instructions.Replace('.', ' ');
+            instructions = instructions.Replace(',', ' ');
+            instructions = instructions.Replace(':', ' ');
+            instructions = instructions.Replace(';', ' ');
+
+
+
             return instructions;
         }
+        /// <summary>
+        /// Parses data from a known format and splits them into 
+        /// respective data categories 
+        /// </summary>
+        /// <returns></returns>
         private List<Ingredient> makeIngredients()
         {
 
@@ -84,7 +110,11 @@ namespace Recipe_Managing_Project_DskApp
             }
             return ingredientList;
         }
-
+        /// <summary>
+        /// First checks for valid inputs
+        /// then puts all the pieces of the recipe together 
+        /// </summary>
+      
         private void btnAdd_Click(object sender, EventArgs e)
         {
             nName = tbName.Text;
@@ -114,6 +144,8 @@ namespace Recipe_Managing_Project_DskApp
             Close();
         }
 
+       
+      
         private void rdbEasy_CheckedChanged(object sender, EventArgs e)
         {
             nComplexity = (rdbEasy.Checked) ? "Easy" : "";

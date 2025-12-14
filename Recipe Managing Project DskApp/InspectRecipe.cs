@@ -13,6 +13,10 @@ using  Recipe_Managing_Project_DskApp.DB;
 
 namespace Recipe_Managing_Project_DskApp
 {
+    /// <summary>
+    ///  displays detailed information about a specified recipe, including its name, complexity,
+    /// ingredients, dietary restrictions, intolerances, and instructions.
+    /// </summary>
     public partial class InspectRecipe : Form
     {
         public Recipe Recip;
@@ -22,6 +26,9 @@ namespace Recipe_Managing_Project_DskApp
             Recip = imported;
             ShowData();
         }
+        /// <summary>
+        /// This method displays all the data from the recipe into the forms data types 
+        /// </summary>
         private void ShowData()
         {
             recipeName.Text = Recip.Name.name;

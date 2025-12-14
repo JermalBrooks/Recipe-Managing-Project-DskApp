@@ -8,6 +8,9 @@ using System.Windows.Forms;
 
 namespace Recipe_Managing_Project_DskApp.DB
 {
+    /// <summary>
+    /// The recipe Class provides Methods to organize data 
+    /// </summary>
     public class recipe
     {
         public static string Instructions;
@@ -150,6 +153,9 @@ namespace Recipe_Managing_Project_DskApp.DB
                 unit = _Unit;
             }
         }
+/// <summary>
+/// Each data category is full of several different data types, that helps abtract the data.
+/// </summary>
         public struct Recipe
         {
             public Name Name;
