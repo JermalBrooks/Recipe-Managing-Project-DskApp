@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Recipe_Managing_Project_DskApp.DB
 {
-    internal class recipe
+    /// <summary>
+    /// The recipe Class provides Methods to organize data 
+    /// </summary>
+    public class recipe
     {
-        internal static readonly string Instructions;
+        public static string Instructions;
 
-        public static IEnumerable<object> Ingredients { get; internal set; }
-
+ 
         public struct Name
         {
             public string name;
@@ -56,9 +60,20 @@ namespace Recipe_Managing_Project_DskApp.DB
                 Seafood = Convert.ToBoolean(seafood);
                 RedMeat = Convert.ToBoolean(redMeat);
             }
-
-
-
+            public Dictionary<string, bool> toDict()
+            {
+                return new Dictionary<string, bool>{
+            { nameof(Dairy), Dairy },
+            { nameof(Gluten), Gluten },
+            { nameof(Shellfish), Shellfish },
+            { "Tree Nuts", TreeNuts },
+            { nameof(Soy), Soy },
+            { nameof(Eggs), Eggs },
+            { nameof(Peanuts), Peanuts },
+            { nameof(Seafood), Seafood },
+            {  "Red Meat", RedMeat }
+            };
+            }
         }
         public struct Intolerances
         {
@@ -76,18 +91,18 @@ namespace Recipe_Managing_Project_DskApp.DB
             public bool TreeNuts;
 
             public Intolerances(
-                string lactose,
-                string gluten,
-                string caffeine,
-                string casein,
-                string fructose,
-                string msg,
-                string eggs,
-                string soy,
-                string nuts,
-                string shellfish,
-                string peanuts,
-                string treeNuts)
+               string lactose = "false",
+               string gluten = "false",
+               string caffeine = "false",
+               string casein = "false",
+               string fructose = "false",
+               string msg = "false",
+               string eggs = "false",
+               string soy = "false",
+               string nuts = "false",
+               string shellfish = "false",
+               string peanuts = "false",
+               string treeNuts = "false")
             {
                 Lactose = Convert.ToBoolean(lactose);
                 Gluten = Convert.ToBoolean(gluten);
@@ -101,33 +116,70 @@ namespace Recipe_Managing_Project_DskApp.DB
                 Shellfish = Convert.ToBoolean(shellfish);
                 Peanuts = Convert.ToBoolean(peanuts);
                 TreeNuts = Convert.ToBoolean(treeNuts);
+
+            }
+         
+         
+            public Dictionary<string, bool> toDict()
+            {
+                return new Dictionary<string, bool>{
+            { nameof(Lactose), Lactose },
+            { nameof(Gluten), Gluten },
+            { nameof(Caffeine), Caffeine },
+            { nameof(Casein), Casein },
+            { nameof(Fructose), Fructose },
+            { nameof(MSG), MSG },
+            { nameof(Eggs), Eggs },
+            { nameof(Soy), Soy },
+            { nameof(Nuts), Nuts },
+            { nameof(Shellfish), Shellfish },
+            { nameof(Peanuts), Peanuts },
+            { nameof(TreeNuts), TreeNuts }
+             };
+
+        
             }
 
         }
         public struct Ingredient
         {
             public string name;
-            public int amount;
+            public double amount;
             public string unit;
             public Ingredient(string _Name, string _Amount, string _Unit)
             {
                 name = _Name;
-                amount = Convert.ToInt32(_Amount);
+                amount = Convert.ToDouble(_Amount);
                 unit = _Unit;
             }
         }
+/// <summary>
+/// Each data category is full of several different data types, that helps abtract the data.
+/// </summary>
         public struct Recipe
         {
             public Name Name;
             public Restrictions Restrictions;
             public Intolerances Intolerances;
             public List<Ingredient> Ingredients;
-            public Recipe(Name _Name, Restrictions _Restrictions,Intolerances _Intolerances, List<Ingredient> _Ingredients)
+            public string Instructions;
+            public Recipe(Name _Name, Restrictions _Restrictions, Intolerances _Intolerances, List<Ingredient> _Ingredients, string _Instructions)
             {
                 Name = _Name;
                 Restrictions = _Restrictions;
                 Intolerances = _Intolerances;
                 Ingredients = _Ingredients;
+                Instructions = _Instructions;
+            }
+            public List<string> getNamedIngredients()
+            {
+                List<string> list = new List<string>();
+                foreach (Ingredient i in Ingredients)
+                {
+                    list.Add(i.name);
+                }
+                return list;
+
             }
 
         }

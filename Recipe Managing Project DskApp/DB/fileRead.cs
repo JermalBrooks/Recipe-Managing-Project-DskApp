@@ -9,6 +9,9 @@ using static Recipe_Managing_Project_DskApp.DB.recipe;
 
 namespace Recipe_Managing_Project_DskApp.DB
 {
+    /// <summary>
+    /// Parses all the XML data into the predefined storage structures 
+    /// </summary>
     internal class fileRead
     {
         XmlDocument xmlDoc;
@@ -23,6 +26,10 @@ namespace Recipe_Managing_Project_DskApp.DB
         {
             this.path = path;
         }
+        /// <summary>
+        /// Reads recipe data from the XML file specified by the path and populates the a list for all the recipes 
+        /// </summary>
+ 
         public void read()
         {
             xmlDoc.Load(path);
@@ -33,10 +40,12 @@ namespace Recipe_Managing_Project_DskApp.DB
             Name name = new Name();
             Restrictions restrictions = new Restrictions();
             Intolerances intolerances = new Intolerances();
+            string instructions = string.Empty;
             for (int i = 0; i < root.Count; i++)
             {
-                foreach(XmlNode node in root[i].ChildNodes) {
-  
+                foreach (XmlNode node in root[i].ChildNodes)
+                {
+
                     if (node.Name == "name")
                     {
                         name = new Name(node.InnerText, node.Attributes[0].InnerText);
@@ -45,7 +54,7 @@ namespace Recipe_Managing_Project_DskApp.DB
                     {
                         restrictions = new Restrictions(node.Attributes[0].InnerText, node.Attributes[1].InnerText, node.Attributes[2].InnerText, node.Attributes[3].InnerText, node.Attributes[4].InnerText, node.Attributes[5].InnerText, node.Attributes[6].InnerText, node.Attributes[7].InnerText, node.Attributes[8].InnerText);
                     }
-                    else if (node.Name == "intolerances") 
+                    else if (node.Name == "intolerances")
                     {
                         intolerances = new Intolerances(node.Attributes[0].InnerText, node.Attributes[1].InnerText, node.Attributes[2].InnerText, node.Attributes[3].InnerText, node.Attributes[4].InnerText, node.Attributes[5].InnerText, node.Attributes[6].InnerText, node.Attributes[7].InnerText, node.Attributes[8].InnerText, node.Attributes[9].InnerText, node.Attributes[10].InnerText, node.Attributes[11].InnerText);
 
@@ -55,13 +64,17 @@ namespace Recipe_Managing_Project_DskApp.DB
                         ingredients.Add(new Ingredient(node.Attributes[0].InnerText, node.Attributes[1].InnerText, node.Attributes[2].InnerText));
 
                     }
-
+                    else if (node.Name == "instructions")
+                    {
+                        instructions = node.InnerText;
+                    }
                 }
             
-                recipe.Add(new Recipe(name, restrictions,intolerances, ingredients));
+                recipe.Add(new Recipe(name, restrictions,intolerances, ingredients,instructions));
                 name = new Name();
                 restrictions = new Restrictions();
                 ingredients = new List<Ingredient>();
+                instructions = string.Empty;
             }
         }
             

@@ -1,11 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <recipes>
   <recipe>
+    <name complexity="easy">Water</name>
+    <restrictions dairy="False" gluten="false" shell-fish="False" tree-nuts="false" soy="false" eggs="False" peanuts="False" seafood="False" red-meat="False" />
+    <intolerances lactose="False" gluten="false" caffeine="False" casein="False" fructose="False" msg="False" eggs="False" soy="False" nuts="False" shellfish="False" peanuts="false" tree-nuts="false" />
+    <ingredient name="Water" amount="1" unit="Cup" />
+    <instructions> none </instructions>
+  </recipe>
+  <recipe>
     <name complexity="easy">Peanut-Butter-and-Jelly</name>
     <restrictions dairy="False" gluten="True" shell-fish="False" tree-nuts="False" soy="True" eggs="False" peanuts="True" seafood="False" red-meat="False" />
     <intolerances lactose="False" gluten="True" caffeine="False" casein="False" fructose="False" msg="False" eggs="False" soy="False" nuts="True" shellfish="False" peanuts="True" tree-nuts="True" />
     <ingredient name="Peanut Butter" amount="1" unit="spread" />
     <ingredient name="Jelly" amount="1" unit="spread" />
     <ingredient name="Bread" amount="2" unit="slices" />
+    <instructions> spread peanut butter and jelly on bread </instructions>
+  </recipe>
+  <recipe>
+    <name complexity="Medium">Cake</name>
+    <restrictions dairy="True" gluten="True" shell-fish="False" tree-nuts="False" soy="False" eggs="True" peanuts="False" seafood="False" red-meat="False" />
+    <intolerances lactose="True" gluten="True" caffeine="False" casein="False" fructose="True" msg="False" eggs="True" soy="False" nuts="False" shellfish="False" peanuts="False" tree-nuts="False" />
+    <ingredient name="Flour" amount="2" unit="Cups" />
+    <ingredient name="&#xA;Baking-Powder" amount="2.5" unit="Tbsp" />
+    <ingredient name="&#xA;Unsalted-Butter" amount="0.5" unit="Cups" />
+    <ingredient name="&#xA;Granulated-Sugar" amount="1.5" unit="Cups" />
+    <ingredient name="&#xA;Eggs" amount="2" unit="Eggs" />
+    <ingredient name="&#xA;Milk" amount="1" unit="Cup" />
+    <ingredient name="&#xA;Vanilla-Extract" amount="2" unit="Tsp" />
+    <instructions>Preheat-the-oven-to-350F--Grease-and-flour-a-9x13-inch-baking-pan-or-two-9-inch-round-cake-pansCombine-the-dry-ingredients-In-a-medium-bowl-whisk-together-the-flour-baking-powder-and-saltCream-the-butter-and-sugar-In-a-large-bowl-beat-the-softened-butter-and-sugar-together-with-an-electric-mixer-until-light-and-fluffyAdd-eggs-and-vanilla-Beat-in-the-eggs-one-at-a-time-mixing-well-after-each-addition-Stir-in-the-vanilla-extractAlternate-wet-and-dry-mixtures-Gradually-add-the-flour-mixture-to-the-butter-mixture-alternating-with-the-milk-mixing-on-low-speed-just-until-combined-after-each-addition-Be-careful-not-to-overmix-the-batterPour-the-batter-evenly-into-the-prepared-pan-Bake-in-the-preheated-oven-for-30-to-35-minutes-or-until-a-toothpick-inserted-into-the-center-of-the-cake-comes-out-clean-Cool-the-cake-in-the-pans-for-10-minutes-before-transferring-it-to-a-wire-rack-to-cool-completely-Once-cooled-you-can-frost-and-decorate-as-desired-</instructions>
   </recipe>
 </recipes>
